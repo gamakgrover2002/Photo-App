@@ -9,7 +9,7 @@ const UploadForm: React.FC = () => {
   const [uploadStatus, setUploadStatus] = useState<boolean | null>(null);
 
   const onSubmit = async () => {
-    const result = await handleUpload({ selectedFile, category });
+    const result = await handleUpload();
     setUploadStatus(result);
   };
 

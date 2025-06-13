@@ -16,12 +16,12 @@ const UploadInput: React.FC<UploadInputProps> = ({ setSelectedFile }) => {
   };
 
   return (
-    <div className="w-[800px] h-[300px] relative">
+    <div className="w-full h-[300px] relative">
       <label
         htmlFor="category"
-        className="text-center w-[400px] h-full flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-300  rounded-lg  transition"
+        className="text-center w-full h-full  flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-gray-300  rounded-lg  transition"
       >
-        <img src="/icons/arrow-up.svg" alt="Upload Icon" className="w-[100px]" />
+        <img src="/icons/arrow-up.svg" alt="Upload Icon" className="w-[75px]" />
         Drag or drop an image here
         <br />
         or
