@@ -1,16 +1,18 @@
 import type React from "react";
 
 interface UploadInputProps {
-  setSelectedFile: (value: File) => void;
+  setSelectedFile: (value: string) => void;
 }
 
 const UploadInput: React.FC<UploadInputProps> = ({ setSelectedFile }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-      console.log("Selected file:", file);
-    }
+    console.log(file)
+   const fileObject = file ? URL.createObjectURL(file) : null;
+   if (fileObject) {
+     setSelectedFile(fileObject);
+   }
+   
   };
 
   return (

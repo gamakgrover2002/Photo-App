@@ -7,15 +7,18 @@ export const getTopData = async()=>{
     return res;
 }
 
-export const handleUpload = async () => {
+export const handleUpload = async (data:{selectedFile: string | null,category:string}) => {
     try {
       const result = await fetch("https://run.mocky.io/v3/89ccd842-7dbf-4891-9df9-71329d0d6d9c");
       const text = await result.text(); // read as plain text first
       const res = JSON.parse(text);
-      return res;
+    if(res.status ==="ok"){
+      return true;
+    }
+    return false;
   
-    } catch (err) {
-      console.error("Error:", err);
+    } catch {
+      return false;
     }
   };
   
