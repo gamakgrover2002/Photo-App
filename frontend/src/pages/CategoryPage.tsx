@@ -1,20 +1,32 @@
-import React from "react";
-import HeroSection from "../sections/HomePage/heroSection";
-import TopImagesSection from "../sections/HomePage/topImagesSection";
+import React, { useEffect, useState } from "react";
+import CategoryPageHeroSection from "../sections/CategoryPage/CategoryPageHeroSection";
+import SearchSection from "../sections/CategoryPage/SerachSection";
+import { getCategories } from "../utils/apiFunctions/apifunctions";
+import type { Category, Images } from "../types/types";
 
-const renderHomePage = (): React.ReactNode => {
+const renderCategoryPage = (setCategory:(category:string)=> void,categoryData:Category[]): React.ReactNode => {
   return (
     <div className="px-[10px]" >
-     <HeroSection />
-     <TopImagesSection />
+     <CategoryPageHeroSection categoryData={categoryData} setCategory={setCategory} />
+     <SearchSection />
     </div>
   );
 };
 
 const CategoryPage: React.FC = () => {
+  const [currentcategory,setCurrentCategory] = useState("all");
+  const [categoryData,setCategoryData] = useState<Images[] | null>(null);
+  useEffect(()=>{
+    const getCategoryData= async()=>{
+      const category =  await  getCategories();
+      setCategoryData(category);
+    }
+    getCategoryData();
+  },[])
   return (
+
     <div> 
-      {renderHomePage()} 
+      {renderCategoryPage(setCategoryData,categoryData)} 
     </div>
   );
 };

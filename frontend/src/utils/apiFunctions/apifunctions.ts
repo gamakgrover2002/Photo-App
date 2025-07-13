@@ -1,15 +1,24 @@
 export const getTopData = async()=>{
 
-    const data = await fetch("https://run.mocky.io/v3/32ff568b-fc3e-45e4-a7da-7f4485096deb",{
+    const data = await fetch("https://photos.free.beeceptor.com/top-photos",{
         method: "GET",
     });
    const res = await data.json();
+   console.log(res);
     return res;
 }
+export const getData = async()=>{
 
+  const data = await fetch("https://photos.free.beeceptor.com/top-photos",{
+      method: "GET",
+  });
+ const res = await data.json();
+ console.log(res);
+  return res;
+}
 export const handleUpload = async (data:{selectedFile: string | null,category:string}) => {
     try {
-      const result = await fetch("https://run.mocky.io/v3/89ccd842-7dbf-4891-9df9-71329d0d6d9c");
+      const result = await fetch("https://photos.free.beeceptor.com/");
       const text = await result.text(); // read as plain text first
       const res = JSON.parse(text);
     if(res.status ==="ok"){
@@ -22,3 +31,16 @@ export const handleUpload = async (data:{selectedFile: string | null,category:st
     }
   };
   
+export const getCategories = async () => {
+  try {
+    const response = await fetch("https://photos.free.beeceptor.com/category");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return [];
+  }
+}
