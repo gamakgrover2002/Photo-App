@@ -5,18 +5,18 @@ type ModalComponentProps ={
   toggleModal: () => void;
 }
 const ModalComponent:React.FC<ModalComponentProps> = ({uploadStatus,toggleModal})=>{
-    return <Modal className={`${uploadStatus? "bg-green-300":"bg-red-300"} w-[400px] absolute top-0`} isOpen={uploadStatus !== null} toggle={toggleModal}>
+    return <Modal className={`${uploadStatus? "bg-green-100 border-green-400 border-2":"bg-red-100 border-2 border-red-400"} w-[600px]  top-0 fixed justify-center `} isOpen={uploadStatus !== null} toggle={toggleModal}>
     <ModalHeader className='text-center text-2xl' toggle={toggleModal}>
       {uploadStatus ? 'Upload Successful' : 'Upload Failed'}
     </ModalHeader>
-    <ModalBody>
+    <ModalBody className='text-center text-lg'>
       {uploadStatus
         ? 'Your file has been uploaded successfully.'
         : 'There was an error uploading your file. Please try again.'}
     </ModalBody>
     <ModalFooter>
-      <Button color="primary" onClick={toggleModal}>
-        OK
+      <Button className='text-center w-[100%]' onClick={toggleModal}>
+        Close
       </Button>
     </ModalFooter>
   </Modal>;

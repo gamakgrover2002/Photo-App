@@ -9,14 +9,14 @@ const UploadForm: React.FC = () => {
   const [uploadStatus, setUploadStatus] = useState<boolean | null>(null);
 
   const onSubmit = async () => {
-    const result = await handleUpload();
+    const result = await handleUpload({selectedFile, category});
     setUploadStatus(result);
   };
 
   const toggleModal = () => setUploadStatus(null);
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border border-gray-300 rounded-2xl shadow-md bg-white space-y-4">
+    <div className="max-w-md mx-auto mt-10 p-6 border border-gray-300 rounded-2xl shadow-md bg-white space-y-4 flex flex-col gap-2">
 <ModalComponent uploadStatus={uploadStatus} toggleModal={toggleModal} />
       <UploadInput setSelectedFile={setSelectedFile} />
       <label htmlFor="categoryInput" className="mt-4 block text-md font-medium text-gray-700 mb-1">
@@ -28,9 +28,10 @@ const UploadForm: React.FC = () => {
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
+
       <div className="w-full flex justify-center">
         <button
-          className="align-middle h-[50px] w-[150px] text-white rounded-3xl bg-blue-700 hover:bg-white hover:text-blue-700 hover:cursor-pointer"
+          className="align-middle h-[50px] w-[150px] text-white  bg-blue-700 hover:bg-white hover:border-solid hover:border-blue-700 hover:border-2 !rounded-sm hover:!text-blue-700 hover:cursor-pointer"
           onClick={onSubmit}
         >
           Submit
