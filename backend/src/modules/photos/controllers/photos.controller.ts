@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   Controller,
   Delete,
@@ -38,15 +37,4 @@ export class PhotoController {
   reportPhoto(@Param('id') id: string): Promise<Photos> {
     return this.photoservice.reportPhoto(id);
   }
-=======
-import { Controller, Get } from '@nestjs/common';
-
-@Controller('photos')
-export class PhotoController {
-  constructor(private readonly photoservice: any) {}
-  @Get()
-  getTopPhotos(): string {
-    return this.photoservice.getTopPhotos();
-  }
->>>>>>> 82b865750039c906c837e3a226591a6ba3c212b3
 }
