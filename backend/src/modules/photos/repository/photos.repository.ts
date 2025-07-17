@@ -6,7 +6,7 @@ import { Photos } from '../types/types';
 export class PhotoRepository {
   constructor(private readonly prismaClient: PrismaClient) {}
   async getTopPhotos(): Promise<Photos[]> {
-    return this.prismaClient.photos.findMany({
+    return this.prismaClient.photo.findMany({
       select: {
         alt: true,
         id: true,
@@ -31,13 +31,13 @@ export class PhotoRepository {
     });
   }
   async likePhoto(id: string): Promise<Photos> {
-    return this.prismaClient.photos.update({
+    return this.prismaClient.photo.update({
       where: { id },
       data: { number_liked: { increment: 1 } },
     });
   }
   async deletePhoto(id: string): Promise<Photos> {
-    return this.prismaClient.photos.delete({
+    return this.prismaClient.photo.delete({
       where: { id },
     });
   }
