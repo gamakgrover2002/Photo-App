@@ -5,3 +5,7 @@ export interface Images{
  uploaderImage:string
  imageCategory:string
 }
+export interface Category {
+    id: number;
+    name: string;
+}
