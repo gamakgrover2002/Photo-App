@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName    String
+  lastName     String
+  email        String   @unique
+  password     String
+  profileImage String?
+  posts        Photo[] // Fixed from Photos[]
+  createdAt    DateTime @default(now())
+}
+
+model Photo {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  url            String
+  alt            String
+  createdAt      DateTime @default(now()) // Fixed from Date
+  number_liked   Int
+  number_reports Int
+  userId         String   @db.ObjectId
+  user           User     @relation(fields: [userId], references: [id]) // Added relation
+}
