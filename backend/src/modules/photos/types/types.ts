@@ -7,5 +7,6 @@ export interface Photos {
 }
 export interface User {
   id: string;
-  name: string | null;
+  firstName: string;
+  lastName: string;
 }
