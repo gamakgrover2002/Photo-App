@@ -15,11 +15,14 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  email     String   @unique
-  name      String?
-  posts     Photo[]  // Fixed from Photos[]
-  createdAt DateTime @default(now())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName    String
+  lastName     String
+  email        String   @unique
+  password     String
+  profileImage String?
+  posts        Photo[] // Fixed from Photos[]
+  createdAt    DateTime @default(now())
 }
 
 model Photo {
