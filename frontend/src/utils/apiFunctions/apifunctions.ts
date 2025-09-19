@@ -4,22 +4,20 @@ export const getTopData = async()=>{
         method: "GET",
     });
    const res = await data.json();
-   console.log(res);
     return res;
 }
-export const getData = async()=>{
+export const fetchCategories = async()=>{
 
   const data = await fetch("https://photos.free.beeceptor.com/top-photos",{
       method: "GET",
   });
  const res = await data.json();
- console.log(res);
   return res;
 }
 export const handleUpload = async (data:{selectedFile: string | null,category:string}) => {
     try {
       const result = await fetch("https://photos.free.beeceptor.com/");
-      const text = await result.text(); // read as plain text first
+      const text = await result.text(); 
       const res = JSON.parse(text);
     if(res.status ==="ok"){
       return true;
@@ -43,4 +41,12 @@ export const getCategories = async () => {
     console.error("Error fetching categories:", error);
     return [];
   }
+}
+export  const fetchCategoryData =async (currentCategory:string)=>{
+  const data = await fetch("https://photos.free.beeceptor.com/top-photos",{
+    method: "GET",
+});
+const res = await data.json();
+console.log(res);
+return res;
 }
