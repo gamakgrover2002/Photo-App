@@ -8,7 +8,7 @@ import type { Category, Images } from "../types/types";
 const CategoryPage: React.FC = () => {
   const [currentCategory,setCurrentCategory] = useState("all");
   const [categories,setCategories] = useState<Category[] | null>(null);
-  const [categoryData,setCategoryData] = useState<Images[] | null>(null);
+  const [categoryData,setCategoryData] = useState<Images[] >([]);
   useEffect(()=>{
     const getCategory= async()=>{
       const categories =  await  fetchCategories();
