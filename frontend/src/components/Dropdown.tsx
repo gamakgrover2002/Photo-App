@@ -19,7 +19,7 @@ const DropdownComponent: React.FC<DropdownComponentProps> = ({ categories, setCa
       <button
         id="dropdownInformationButton"
         onClick={() => setIsVisible((prev) => !prev)}
-        className="inline-flex justify-between items-center w-full px-5 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500"
+        className="inline-flex justify-between items-center w-full pl-7 pr-3 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-700 dark:hover:bg-blue-800 dark:focus:ring-blue-500"
         type="button"
       >
         {currrentCategory}

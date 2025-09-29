@@ -16,7 +16,7 @@ export class PhotoRepository {
           select: {
             id: true,
             firstName: true,
-            lastName: true
+            lastName: true,
           },
         },
       },

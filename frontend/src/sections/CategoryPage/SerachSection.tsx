@@ -8,9 +8,9 @@ return(
     <div className="flex justify-center">
     {(data? data : []).map((e)=>{
         return(
-            <>
-            {e}
-            </>
+            <div key={e.imageId}>
+            {e.imageId}
+            </div>
         )
     })}
     </div>
