@@ -6,8 +6,8 @@ import { Photos } from '../types/types';
 export class Photoservice {
   constructor(private readonly photoRepository: PhotoRepository) {}
 
-  getTopPhotos(): Promise<Photos[]> {
-    return this.photoRepository.getTopPhotos();
+  getTopPhotos(page: number, limit: number, isTop: boolean): Promise<Photos[]> {
+    return this.photoRepository.getTopPhotos(page, limit, isTop);
   }
   likePhoto(id: string): Promise<Photos> {
     return this.photoRepository.likePhoto(id);
