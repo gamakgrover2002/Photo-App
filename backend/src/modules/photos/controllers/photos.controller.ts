@@ -5,19 +5,27 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { Photoservice } from '../service/photos.service';
 import { Photos } from '../types/types';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
+import { PaginatedDto } from 'src/common/dto/PaginatedDto';
 
 @Controller('/photos')
 export class PhotoController {
   constructor(private readonly photoservice: Photoservice) {}
   @Get()
-  getTopPhotos(): Promise<Photos[]> {
-    return this.photoservice.getTopPhotos();
+  getPhotos(
+    @Query() query: PaginatedDto,
+    @Query('type') type: string,
+  ): Promise<Photos[]> {
+    const limit = query.limit;
+    const page = query.page;
+    const isTop: boolean = type ? true : false;
+    return this.photoservice.getTopPhotos(page, limit, isTop);
   }
   @Post('/upload')
   @UseInterceptors(AnyFilesInterceptor())
